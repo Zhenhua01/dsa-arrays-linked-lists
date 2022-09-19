@@ -2,8 +2,8 @@
 
 const LinkedList = require("./linked-list");
 
-describe("push", function() {
-  it("appends node and increments length", function() {
+describe("push", function () {
+  it("appends node and increments length", function () {
     let lst = new LinkedList();
 
     lst.push(5);
@@ -25,8 +25,8 @@ describe("push", function() {
   });
 });
 
-describe("unshift", function() {
-  it("adds node at start and increments length", function() {
+describe("unshift", function () {
+  it("adds node at start and increments length", function () {
     let lst = new LinkedList();
 
     lst.unshift(5);
@@ -47,8 +47,8 @@ describe("unshift", function() {
   });
 });
 
-describe("pop", function() {
-  it("removes node at end and decrements length", function() {
+describe("pop", function () {
+  it("removes node at end and decrements length", function () {
     let lst = new LinkedList([5, 10]);
 
     expect(lst.pop()).toBe(10);
@@ -63,8 +63,8 @@ describe("pop", function() {
   });
 });
 
-describe("shift", function() {
-  it("removes node at start and decrements length", function() {
+describe("shift", function () {
+  it("removes node at start and decrements length", function () {
     let lst = new LinkedList([5, 10]);
 
     expect(lst.shift()).toBe(5);
@@ -79,8 +79,8 @@ describe("shift", function() {
   });
 });
 
-describe("getAt", function() {
-  it("gets val at index", function() {
+describe("getAt", function () {
+  it("gets val at index", function () {
     let lst = new LinkedList([5, 10, 15, 20]);
 
     expect(lst.getAt(0)).toBe(5);
@@ -100,8 +100,8 @@ describe("getAt", function() {
   });
 });
 
-describe("setAt", function() {
-  it("sets val at index", function() {
+describe("setAt", function () {
+  it("sets val at index", function () {
     let lst = new LinkedList([5, 10]);
 
     expect(lst.setAt(0, 1));
@@ -125,115 +125,115 @@ describe("setAt", function() {
   });
 });
 
-// describe("insertAt", function() {
-//   it("inserts node and adjusts nearby nodes", function() {
-//     let lst = new LinkedList([5, 15]);
+describe("insertAt", function () {
+  it("inserts node and adjusts nearby nodes", function () {
+    let lst = new LinkedList([5, 15]);
 
-//     lst.insertAt(1, 10);
-//     expect(lst.head.val).toBe(5);
-//     expect(lst.head.next.val).toBe(10);
-//     expect(lst.head.next.next.val).toBe(15);
-//     expect(lst.tail.val).toBe(15);
-//     expect(lst.length).toBe(3);
+    lst.insertAt(1, 10);
+    expect(lst.head.val).toBe(5);
+    expect(lst.head.next.val).toBe(10);
+    expect(lst.head.next.next.val).toBe(15);
+    expect(lst.tail.val).toBe(15);
+    expect(lst.length).toBe(3);
 
-//     lst.insertAt(0, 1);
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.tail.val).toBe(15);
-//     expect(lst.length).toBe(4);
+    lst.insertAt(0, 1);
+    expect(lst.head.val).toBe(1);
+    expect(lst.tail.val).toBe(15);
+    expect(lst.length).toBe(4);
 
-//     lst.insertAt(4, 20);
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.tail.val).toBe(20);
-//     expect(lst.length).toBe(5);
-//   });
+    lst.insertAt(4, 20);
+    expect(lst.head.val).toBe(1);
+    expect(lst.tail.val).toBe(20);
+    expect(lst.length).toBe(5);
+  });
 
-//   it("inserts into empty list", function() {
-//     let lst = new LinkedList();
+  it("inserts into empty list", function () {
+    let lst = new LinkedList();
 
-//     lst.insertAt(0, 5);
-//     expect(lst.length).toBe(1);
-//     expect(lst.head.val).toBe(5);
-//     expect(lst.tail.val).toBe(5);
-//   });
+    lst.insertAt(0, 5);
+    expect(lst.length).toBe(1);
+    expect(lst.head.val).toBe(5);
+    expect(lst.tail.val).toBe(5);
+  });
 
-//   it("throws an error when insertAt index is out of range", function () {
-//     let lst = new LinkedList([5]);
+  it("throws an error when insertAt index is out of range", function () {
+    let lst = new LinkedList([5]);
 
-//     expect(() => lst.insertAt(-1, 0)).toThrow(Error);
-//     expect(() => lst.insertAt(2, 0)).toThrow(Error);
-//   });
-// });
+    expect(() => lst.insertAt(-1, 0)).toThrow(Error);
+    expect(() => lst.insertAt(2, 0)).toThrow(Error);
+  });
+});
 
-// describe("removeAt", function() {
-//   it("removes items from list", function() {
-//     let lst = new LinkedList([5, 10, 15, 20]);
+describe("removeAt", function () {
+  it("removes items from list", function () {
+    let lst = new LinkedList([5, 10, 15, 20]);
 
-//     expect(lst.length).toBe(4);
-//     expect(lst.removeAt(2)).toBe(15);
-//     expect(lst.length).toBe(3);
+    expect(lst.length).toBe(4);
+    expect(lst.removeAt(2)).toBe(15);
+    expect(lst.length).toBe(3);
 
-//     expect(lst.removeAt(0)).toBe(5);
-//     expect(lst.length).toBe(2);
+    expect(lst.removeAt(0)).toBe(5);
+    expect(lst.length).toBe(2);
 
-//     expect(lst.removeAt(1)).toBe(20);
-//     expect(lst.length).toBe(1);
-//   });
+    expect(lst.removeAt(1)).toBe(20);
+    expect(lst.length).toBe(1);
+  });
 
-//   it("removes from 1-item list", function() {
-//     let lst = new LinkedList(["a"]);
+  it("removes from 1-item list", function () {
+    let lst = new LinkedList(["a"]);
 
-//     lst.removeAt(0);
-//     expect(lst.length).toBe(0);
-//     expect(lst.head).toBe(null);
-//     expect(lst.tail).toBe(null);
-//   });
+    lst.removeAt(0);
+    expect(lst.length).toBe(0);
+    expect(lst.head).toBe(null);
+    expect(lst.tail).toBe(null);
+  });
 
-//   it("throws an error when removeAt index is out of range", function () {
-//     let lst = new LinkedList([5]);
+  it("throws an error when removeAt index is out of range", function () {
+    let lst = new LinkedList([5]);
 
-//     expect(() => lst.removeAt(-1)).toThrow(Error);
-//     expect(() => lst.removeAt(1)).toThrow(Error);
-//   });
-// });
+    expect(() => lst.removeAt(-1)).toThrow(Error);
+    expect(() => lst.removeAt(1)).toThrow(Error);
+  });
+});
 
-// describe("average", function() {
-//   it("calculates the average of items in a list", function() {
-//     let lst = new LinkedList([2, 3, 1, 1, 7, 6, 9]);
-//     expect(lst.average()).toBeCloseTo(4.1429, 4);
-//   });
+describe("average", function () {
+  it("calculates the average of items in a list", function () {
+    let lst = new LinkedList([2, 3, 1, 1, 7, 6, 9]);
+    expect(lst.average()).toBeCloseTo(4.1429, 4);
+  });
 
-//   it("returns 0 for empty lists", function() {
-//     let lst = new LinkedList();
-//     expect(lst.average()).toBe(0);
-//   });
-// });
+  it("returns 0 for empty lists", function () {
+    let lst = new LinkedList();
+    expect(lst.average()).toBe(0);
+  });
+});
 
-// describe("reverseInPlace", function() {
-//   it("reverses a list of 3 in place", function() {
-//     let lst = new LinkedList([1,2,3]);
-//     lst.reverseInPlace();
-//     expect(lst.head.val).toBe(3);
-//     expect(lst.head.next.val).toBe(2);
-//     expect(lst.head.next.next.val).toBe(1);
-//     expect(lst.tail.val).toBe(1);
-//     expect(lst.tail.next).toBe(null);
-//   });
+describe("reverseInPlace", function () {
+  it("reverses a list of 3 in place", function () {
+    let lst = new LinkedList([1, 2, 3]);
+    lst.reverseInPlace();
+    expect(lst.head.val).toBe(3);
+    expect(lst.head.next.val).toBe(2);
+    expect(lst.head.next.next.val).toBe(1);
+    expect(lst.tail.val).toBe(1);
+    expect(lst.tail.next).toBe(null);
+  });
 
-//   it("reverses a list of 2 in place", function() {
-//     let lst = new LinkedList([1,2]);
-//     lst.reverseInPlace();
-//     expect(lst.head.val).toBe(2);
-//     expect(lst.head.next.val).toBe(1);
-//     expect(lst.tail.val).toBe(1);
-//   });
+  it("reverses a list of 2 in place", function () {
+    let lst = new LinkedList([1, 2]);
+    lst.reverseInPlace();
+    expect(lst.head.val).toBe(2);
+    expect(lst.head.next.val).toBe(1);
+    expect(lst.tail.val).toBe(1);
+  });
 
-//   it("reverses a list of 1 in place", function() {
-//     let lst = new LinkedList([1]);
-//     lst.reverseInPlace();
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.head.next).toBe(null);
-//     expect(lst.tail.val).toBe(1);
-//     expect(lst.tail.next).toBe(null);
-//   });
-// });
+  it("reverses a list of 1 in place", function () {
+    let lst = new LinkedList([1]);
+    lst.reverseInPlace();
+    expect(lst.head.val).toBe(1);
+    expect(lst.head.next).toBe(null);
+    expect(lst.tail.val).toBe(1);
+    expect(lst.tail.next).toBe(null);
+  });
+});
 

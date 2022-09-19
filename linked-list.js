@@ -106,7 +106,7 @@ class LinkedList {
     let count = 0;
     let current = this.head;
 
-    while (count !== idx) {
+    while (count < idx) {
       current = current.next;
       count++;
     }
@@ -122,7 +122,7 @@ class LinkedList {
     let count = 0;
     let current = this.head;
 
-    while (count !== idx) {
+    while (count < idx) {
       current = current.next;
       count++;
     }
@@ -130,9 +130,38 @@ class LinkedList {
     current.val = val;
   }
 
+  //count for node = idx-1
+  //node[idx-1].next = newNode
+  //newNode.next=node[idx]
+
   /** insertAt(idx, val): add node w/val before idx. */
 
   insertAt(idx, val) {
+
+    if (idx < 0 || idx > this.length) throw new Error;
+    if (idx === 0) {
+      this.unshift(val);
+      return;
+    }
+    if (idx === this.length) {
+      this.push(val);
+      return;
+    }
+
+    let count = 0;
+    let current = this.head;
+
+    while (count < idx - 1) {
+      current = current.next;
+      count++;
+    }
+
+    let newNode = new Node(val);
+
+    newNode.next = current.next;
+    current.next = newNode;
+
+    this.length++;
 
   }
 
@@ -140,12 +169,42 @@ class LinkedList {
 
   removeAt(idx) {
 
+    if (idx < 0 || idx >= this.length) throw new Error;
+    if (idx === 0) {
+      return this.shift();
+    }
+
+    let count = 0;
+    let current = this.head;
+
+    while (count < idx - 1) {
+      current = current.next;
+      count++;
+    }
+
+    let removed = current.next;
+    current.next = current.next.next;
+
+    this.length--;
+
+    return removed.val;
   }
 
   /** average(): return an average of all values in the list */
 
   average() {
 
+    let sum = 0;
+    let count = 0;
+    let current = this.head;
+
+    while (count < this.length) {
+      sum += current.value;
+      count++;
+      current = current.next;
+    }
+
+    return sum / count;
   }
 }
 
