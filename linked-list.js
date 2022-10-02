@@ -22,9 +22,21 @@ class LinkedList {
     for (let val of vals) this.push(val);
   }
 
-  // assign to head if head = null,
-  // assign to after tail if tail != null,
-  // assign to tail if tail = null
+  /** _get(idx): retrieve node at idx. */
+
+  _get(idx) {
+    let cur = this.head;
+    let count = 0;
+
+    while (cur !== null && count !== idx) {
+      count += 1;
+      cur = cur.next;
+    }
+
+    return cur;
+  }
+
+
   /** push(val): add new value to end of list. */
 
   push(val) {
@@ -39,8 +51,7 @@ class LinkedList {
     this.length++;
   }
 
-  // assign as new head, node points to old head
-  // if tail = null, assign new node to tail for empty lists
+
   /** unshift(val): add new value to start of list. */
 
   unshift(val) {
@@ -55,9 +66,6 @@ class LinkedList {
     this.length++;
   }
 
-  // find second to last node, assign as new tail
-  // set new tail.next to null
-  // return old tail that was removed
   /** pop(): return & remove last item. */
 
   pop() {
@@ -129,10 +137,6 @@ class LinkedList {
 
     current.val = val;
   }
-
-  //count for node = idx-1
-  //node[idx-1].next = newNode
-  //newNode.next=node[idx]
 
   /** insertAt(idx, val): add node w/val before idx. */
 
